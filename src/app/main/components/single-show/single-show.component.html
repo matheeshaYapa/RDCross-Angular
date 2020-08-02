@@ -1,1 +1,29 @@
-<p>single-show works!</p>
+<div class="card">
+  <div class="card-img-top card-img-top-250">
+    <img class="img-fluid" [src]="show.image" id="example1"
+         alt="Carousel 1">
+  </div>
+  <div class="card-block p-t-2">
+    <div class="card-header">
+      <table style="width: 285px;">
+        <tr>
+          <td><h4>
+            {{show.artist}}<br>{{show.title}}
+          </h4></td>
+          <td><h3 style="text-align: right">{{show.price | currency}}</h3></td>
+        </tr>
+        <tr>
+          <td><p id="by">By Showtime</p></td>
+        </tr>
+        <tr>
+          <td><p>{{show.scheduledDate | date}}</p></td>
+          <td  style="text-align: right">
+            <button class="button button3" (click)="onBuyTicketClick()">
+              Buy Ticket
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

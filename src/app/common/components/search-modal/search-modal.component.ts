@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-search-modal',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public ngbActiveModal: NgbActiveModal
+  ) { }
 
   ngOnInit(): void {
   }

@@ -1,1 +1,30 @@
-<p>weekly-shows works!</p>
+<div style="text-align: center">
+
+  <img src="assets/images/thisweek.png"
+       style="width: 355px; height: 155px; margin-top: -60px;">
+</div>
+
+<section class="carousel slide mb-5" id="postsCarousel"
+         style="margin-top: -50px;" data-ride="carousel">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-right mb-4">
+        <button class="btn btn-outline-secondary prev" data-slide="prev" title="go back"><i
+          class="fa fa-lg fa-chevron-left"></i></button>
+        <button class="btn btn-outline-secondary next" data-slide="next" title="more"><i
+          class="fa fa-lg fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container p-t-0 m-t-2">
+<!--    <div class="row row-equal carousel-item m-t-0">-->
+      <div class="row row-equal m-t-0">
+        <div class="col-md-4" *ngFor="let show of weeklyShowList">
+          <app-single-show class="carousel-item active" [show]="show"></app-single-show>
+        </div>
+      </div>
+<!--    </div>-->
+  </div>
+
+</section>

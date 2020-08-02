@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "RDCross-Angular"
+    }
+  },
+  "defaultProject": "RDCross-Angular",
+  "cli": {
+    "analytics": "ef69ca6f-9eca-4f9d-98e8-4b799588c2c0"
+  }
 }
