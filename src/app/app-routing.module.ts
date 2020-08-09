@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {CrosshowComponent} from "./main/components/crosshow/crosshow.component";
 import {BuyTicketComponent} from "./buy-ticket/components/buy-ticket/buy-ticket.component";
 import {PlayerComponent} from "./player/components/player/player.component";
+import {LoginComponent} from "./authorization/components/login/login.component";
+import {SignUpComponent} from "./authorization/components/sign-up/sign-up.component";
 
 
 const routes: Routes = [
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'player',
     component: PlayerComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
   }
 ];
 

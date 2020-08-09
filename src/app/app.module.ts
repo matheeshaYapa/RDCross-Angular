@@ -15,8 +15,12 @@ import { TicketPurchaseComponent } from './buy-ticket/components/ticket-purchase
 import { VideoPlayComponent } from './player/components/video-play/video-play.component';
 import { PlayerDescriptionComponent } from './player/components/player-description/player-description.component';
 import { PlayerComponent } from './player/components/player/player.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SearchModalComponent } from './common/components/search-modal/search-modal.component';
+import { LoginComponent } from './authorization/components/login/login.component';
+import { SignUpComponent } from './authorization/components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './authorization/components/forgot-password/forgot-password.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -32,13 +36,18 @@ import { SearchModalComponent } from './common/components/search-modal/search-mo
     VideoPlayComponent,
     PlayerDescriptionComponent,
     PlayerComponent,
-    SearchModalComponent
+    SearchModalComponent,
+    LoginComponent,
+    SignUpComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
+    FlexLayoutModule,
     FormsModule,
     AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

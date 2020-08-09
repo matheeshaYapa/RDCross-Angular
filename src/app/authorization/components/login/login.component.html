@@ -1,0 +1,49 @@
+<section class="login-header">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <div class="card shadow w-50">
+      <h2 class="text-center">Sign In</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-50">
+
+        <!-- Email -->
+        <div class="form-group">
+          <input
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && (loginFormControl.email.errors?.required || loginFormControl.email.errors?.email)}"
+            formControlName="email" type="email" class="form-control" placeholder="E-mail" required>
+          <div *ngIf="isSubmitButtonClicked && loginFormControl.email.errors?.required" class="invalid-feedback">
+            Please enter the E-mail
+          </div>
+          <div *ngIf="isSubmitButtonClicked && loginFormControl.email.errors?.email" class="invalid-feedback">
+            Please enter a valid E-mail
+          </div>
+        </div>
+
+
+
+        <!-- Password -->
+        <div class="form-group">
+          <input
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && loginFormControl.password.errors?.required}"
+            formControlName="password" type="password" class="form-control" placeholder="Password" required>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && loginFormControl.email.errors?.required">
+            Please enter the password.
+          </div>
+        </div>
+
+        <button class="btn btn-primary my-3" type="submit">
+          Sign In
+        </button>
+
+        <div class="row">
+          <div class="col-md-12"> <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png"> SignIn Using Google</a>
+          </div>
+        </div> <br>
+        <p class="text-inverse text-center">Doesn't have an account? <a routerLink="/sign-up" data-abc="true">Sign Up</a></p>
+
+        <div class="d-flex justify-content-around">
+          <a href="">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
