@@ -5,6 +5,7 @@ import {BuyTicketComponent} from "./buy-ticket/components/buy-ticket/buy-ticket.
 import {PlayerComponent} from "./player/components/player/player.component";
 import {LoginComponent} from "./authorization/components/login/login.component";
 import {SignUpComponent} from "./authorization/components/sign-up/sign-up.component";
+import {ForgotPasswordComponent} from "./authorization/components/forgot-password/forgot-password.component";
 
 
 const routes: Routes = [
@@ -27,7 +28,11 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent
-  }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
 ];
 
 @NgModule({

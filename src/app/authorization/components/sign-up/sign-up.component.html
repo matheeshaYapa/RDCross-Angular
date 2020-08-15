@@ -1,14 +1,44 @@
-<section class="login-header">
-  <div fxLayout="column" fxLayoutAlign="center center">
-    <div class="card shadow w-50">
-      <h2 class="text-center">Sign In</h2>
-      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="w-50">
+<div class="sign-up-background">
+<section class="container form-gap" style="opacity: 0.85">
+  <div class="card shadow w-50 mx-auto">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Create Account</h4>
+      <p class="text-center">Get started with your free account</p>
+
+      <p>
+        <a href="" class="btn btn-block btn-google"> <img src="https://img.icons8.com/color/16/000000/google-logo.png">   Login via Google</a>
+        <a href="" class="btn btn-block btn-facebook"> <img src="https://img.icons8.com/color/16/000000/facebook.png">   Login via facebook</a>
+      </p>
+
+      <p class="divider-text">
+        <span class="bg-light">OR</span>
+      </p>
+
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" style="width: 300px !important;">
+
+        <!-- Full name -->
+        <div class="form-group input-group">
+<!--          <label for="fullName">Full Name</label>-->
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          </div>
+          <input
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.fullName.errors?.required}"
+            id="fullName" formControlName="fullName" placeholder="Full Name" type="text" class="form-control" required>
+          <div *ngIf="isSubmitButtonClicked && signUpFormControl.fullName.errors?.required" class="invalid-feedback">
+            Please enter the Full Name
+          </div>
+        </div>
 
         <!-- Email -->
-        <div class="form-group">
+        <div class="form-group input-group">
+<!--          <label for="email">E-mail</label>-->
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+          </div>
           <input
             [ngClass]="{'is-invalid': isSubmitButtonClicked && (signUpFormControl.email.errors?.required || signUpFormControl.email.errors?.email)}"
-            formControlName="email" type="email" class="form-control" placeholder="E-mail" required>
+            id="email" formControlName="email" type="email" placeholder="E-mail" class="form-control" required>
           <div *ngIf="isSubmitButtonClicked && signUpFormControl.email.errors?.required" class="invalid-feedback">
             Please enter the E-mail
           </div>
@@ -20,30 +50,71 @@
 
 
         <!-- Password -->
-        <div class="form-group">
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+          </div>
           <input
             [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.password.errors?.required}"
-            formControlName="password" type="password" class="form-control" placeholder="Password" required>
+            id="password" formControlName="password" type="password" placeholder="Password" class="form-control" required>
           <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.email.errors?.required">
             Please enter the password.
           </div>
         </div>
 
-        <button class="btn btn-primary my-3" type="submit">
-          Sign In
-        </button>
-
-        <div class="row">
-          <div class="col-md-12"> <a class="btn btn-lg btn-google btn-block text-uppercase btn-outline" href="#">
-            <img src="https://img.icons8.com/color/16/000000/google-logo.png"> SignIn Using Google</a>
+        <!-- Confirm Password -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
           </div>
-        </div> <br>
-        <p class="text-inverse text-center">Doesn't have an account? <a routerLink="/sign-up" data-abc="true">Sign Up</a></p>
-
-        <div class="d-flex justify-content-around">
-          <a href="">Forgot password?</a>
+          <input
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.confirmPassword.errors?.required}"
+            id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" type="password" class="form-control" required>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.confirmPassword.errors?.required">
+            Please enter the password.
+          </div>
         </div>
+
+        <!--        Mobile Number-->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+          </div>
+          <input
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && (signUpFormControl.mobileNo.errors?.required || signUpFormControl.mobileNo.errors?.pattern)}"
+            id="mobileNo" formControlName="mobileNo" type="text" placeholder="Mobile Number" class="form-control" required>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.gender.errors?.required">
+            Please enter the Mobile Number.
+          </div>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.gender.errors?.pattern">
+            Please enter a valid Mobile Number.
+          </div>
+        </div>
+
+        <!--        Gender-->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+          </div>
+          <select
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.gender.errors?.required}"
+            class="custom-select" id="gender" formControlName="gender" required>
+            <option [value]="null">Gender</option>
+            <option *ngFor="let gender of genderList" [value]="gender">{{gender}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.gender.errors?.required">
+            Please select the gender.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        </div>
+
+        <p class="text-center">Have an account? <a routerLink="/login">Log In</a> </p>
+
       </form>
-    </div>
+    </article>
   </div>
 </section>
+</div>
