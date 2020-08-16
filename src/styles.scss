@@ -2,3 +2,15 @@
   background-image: url('src/assets/images/pay.png');
   background-size: cover;
 }
+
+/* Invalid feedback fix */
+.invalid-feedback {
+  display: inherit !important;
+  width: 100% !important;
+  margin-top: inherit !important;
+  font-size: 13px !important;
+  color: #e74a3b !important;
+}
+.invalid-feedback label:first-child {
+  font-size: 16px !important;
+}

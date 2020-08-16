@@ -1,23 +1,28 @@
 <div class="sign-up-background">
 <section class="container form-gap" style="opacity: 0.85">
   <div class="card shadow w-50 mx-auto">
-    <article class="card-body mx-auto" style="max-width: 400px;">
-      <h4 class="card-title mt-3 text-center">Create Account</h4>
-      <p class="text-center">Get started with your free account</p>
+    <article class="card-body mx-auto" style="max-width: 450px;">
+      <h1 class="card-title mt-3 text-center">Create Account</h1>
+      <h5 class="text-center">Get started with your free account</h5>
 
-      <p>
-        <a href="" class="btn btn-block btn-google"> <img src="https://img.icons8.com/color/16/000000/google-logo.png">   Login via Google</a>
-        <a href="" class="btn btn-block btn-facebook"> <img src="https://img.icons8.com/color/16/000000/facebook.png">   Login via facebook</a>
+      <p fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1rem">
+        <a class="btn btn-lg btn-block btn-google">
+          <img src="https://img.icons8.com/color/16/000000/google-logo.png">
+          <span>  Login via Google</span>
+        </a>
+        <a class="btn btn-lg btn-block btn-facebook">
+          <img src="https://img.icons8.com/color/16/000000/facebook.png">  Login via facebook
+        </a>
       </p>
 
       <p class="divider-text">
         <span class="bg-light">OR</span>
       </p>
 
-      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" style="width: 300px !important;">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" style="width: 400px !important;">
 
         <!-- Full name -->
-        <div class="form-group input-group">
+        <div class="form-group form-group-lg input-group input-group-lg">
 <!--          <label for="fullName">Full Name</label>-->
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -31,7 +36,7 @@
         </div>
 
         <!-- Email -->
-        <div class="form-group input-group">
+        <div class="form-group form-group-lg input-group input-group-lg">
 <!--          <label for="email">E-mail</label>-->
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
@@ -50,55 +55,62 @@
 
 
         <!-- Password -->
-        <div class="form-group input-group">
+        <div class="form-group form-group-lg input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
           </div>
           <input
-            [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.password.errors?.required}"
-            id="password" formControlName="password" type="password" placeholder="Password" class="form-control" required>
-          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.email.errors?.required">
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && (signUpFormControl.password.errors?.required || signUpFormControl.password.errors?.minlength)}"
+            id="password" formControlName="password" type="password" placeholder="Password"
+            class="form-control" minlength="7" required>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.password.errors?.required">
             Please enter the password.
+          </div>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.password.errors?.minlength">
+            Must contain at least 7 characters.
           </div>
         </div>
 
         <!-- Confirm Password -->
-        <div class="form-group input-group">
+        <div class="form-group form-group-lg input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
           </div>
           <input
-            [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.confirmPassword.errors?.required}"
+            [ngClass]="{'is-invalid': isSubmitButtonClicked && (signUpFormControl.confirmPassword.errors?.required || signUpFormControl.confirmPassword.errors?.checkConfirmPassword)}"
             id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" type="password" class="form-control" required>
           <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.confirmPassword.errors?.required">
             Please enter the password.
           </div>
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.confirmPassword.errors?.checkConfirmPassword">
+            Password does not match.
+          </div>
         </div>
 
         <!--        Mobile Number-->
-        <div class="form-group input-group">
+        <div class="form-group form-group-lg input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
           </div>
           <input
             [ngClass]="{'is-invalid': isSubmitButtonClicked && (signUpFormControl.mobileNo.errors?.required || signUpFormControl.mobileNo.errors?.pattern)}"
             id="mobileNo" formControlName="mobileNo" type="text" placeholder="Mobile Number" class="form-control" required>
-          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.gender.errors?.required">
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.mobileNo.errors?.required">
             Please enter the Mobile Number.
           </div>
-          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.gender.errors?.pattern">
+          <div class="invalid-feedback" *ngIf="isSubmitButtonClicked && signUpFormControl.mobileNo.errors?.pattern">
             Please enter a valid Mobile Number.
           </div>
         </div>
 
         <!--        Gender-->
-        <div class="form-group input-group">
+        <div class="form-group form-group-lg input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
           </div>
           <select
             [ngClass]="{'is-invalid': isSubmitButtonClicked && signUpFormControl.gender.errors?.required}"
-            class="custom-select" id="gender" formControlName="gender" required>
+            class="form-control form-control-lg" id="gender" formControlName="gender" required>
             <option [value]="null">Gender</option>
             <option *ngFor="let gender of genderList" [value]="gender">{{gender}}</option>
           </select>
@@ -108,10 +120,10 @@
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block"> Create Account  </button>
         </div>
 
-        <p class="text-center">Have an account? <a routerLink="/login">Log In</a> </p>
+        <p class="text-center h5">Have an account? <a routerLink="/login">Log In</a> </p>
 
       </form>
     </article>

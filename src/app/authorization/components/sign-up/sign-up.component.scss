@@ -33,3 +33,10 @@
   padding-top: 20vh;
   padding-bottom: 20vh;
 }
+
+.input-group>.input-group-prepend {
+  flex: 0 0 10%;
+}
+.input-group .input-group-text {
+  width: 100%;
+}
